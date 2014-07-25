@@ -1,0 +1,27 @@
+<% if User.find(session[:user_id]).tutoring %>
+<form onsubmit="
+var i = 0;
+while(i<$('.field').length){ 
+i++;
+	if($($('.field')[i]).prop('value')==""){
+	alert('a')
+		return false;
+	}
+
+}
+" action='/complete' method='post'>
+<input name="tutoringsessionid" value=<%=extras[:tutoringsessionid]%> readonly>
+<input type="hidden" name="student_id" value=<%=params[:student_id]%>>
+Class name: <%=params[:class_name]%>     Topic: <%=params[:topic]%>
+<h4>What did the student bring to the session?</h4>
+<input class="field" class="big" type="text" name="materials">
+<h4>What was discussed during the session?</h4>
+<input class="field" class="big" type="text" name="discussion">
+<h4>What will the student do after the session?</h4>
+<input class="field" class="big" type="text" name="followup">
+<input class="field" type="text" name="teacheremail" placeholder="Teacher's email">	
+<input class="field" type="text" name="adminusername" placeholder="Username">
+<input class="field" type="password" name="adminpassword" placeholder="Hey teach, put in your password!">
+<input type="submit">
+</form>
+<%end%>

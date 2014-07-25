@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Auth Example App</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <img class="logo" src="http://isaacmoldofsky.com/2tor_3d.png">
+    <div id = "buttondisplay">
+      <% if current_user %>
+      <%if !current_user.loggedin%>
+     <script>window.location='/auth/google_oauth2'</script>
+      <%end%>
+        <img class="headshot" src=<%= current_user.image %>>Signed in as <strong><%= current_user.name %></strong> with email <strong><%= current_user.email %> </strong>!
+       <div class="sign" id="signout"><%= link_to "Sign out", signout_path, id: "sign_out" %></div>
+      
+      <% else %>
+        <div class="sign" id="signin"><%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %></div>
+
+      <% end %>
+     
+    </div>
+    <div>
+    <%= yield %>
+    </div>
+  </body>
+</html>

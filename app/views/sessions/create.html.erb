@@ -1,0 +1,29 @@
+<form action = '/' method="POST" onsubmit="
+classerror=$('<h2>Select a valid class. </h2>');
+topicerror=$('<h2>Must have a valid topic.</h2>');
+$('#errorshow').empty()
+var oksofar=true;
+if($('#cla').prop('selectedIndex')==0){
+oksofar=false;
+classerror.appendTo($('#errorshow'))
+}
+if($('#top').prop('value').replace(/ /g,'')==''){
+console.log('top not ok')
+oksofar=false;
+topicerror.appendTo($('#errorshow'))
+}
+return oksofar;
+">
+<select id='cla' name = 'class_selection'>
+	<% ["Class Name","Algebra 1 Regular","Algebra 1 Honors", "Algebra 1 Advanced", "Geometry Regular", "Geometry Advanced", "Geometry Honors", "Algebra 2 Regular", "Algebra 2 Advanced", "Algebra 2 Honors"].each do |klass| %>
+	
+<option value='<%=klass%>'><%=klass%></option>
+<%end%>
+<input id='top' name = 'topic_selection' type='text'> 
+<input name='authenticity_token' type='hidden' value=<%=params[:authenticity_token]%>
+</select>
+</form>
+<h3 id='errorshow'></h3>
+<% if Tutorability.where("user_id=?",session[:user_id]).length>0%>
+<a href='/tutor'>I'm a tutor</a>
+<%end%>

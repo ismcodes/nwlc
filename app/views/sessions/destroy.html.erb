@@ -1,0 +1,7 @@
+<h1>Sessions#destroy</h1>
+<p>Find me in app/views/sessions/destroy.html.erb</p>
+<% me=User.find(session[:user_id])%>
+  <% me.loggedin=false%>
+  <% me.tutoring=false %>
+   <% me.save%>
+   <%current_user=nil%>

@@ -1,0 +1,116 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require font-awesome
+ *= require_tree .
+ */
+#spaced{
+width:40%;
+
+ }
+
+ .student{
+
+ }
+
+ .big{
+height:200px;
+width:35%;
+ }
+
+ #errorshow{
+color:#ff0000;
+
+ }
+
+ .sessions{
+width:30%;
+
+ }
+.waiting{
+margin-left:50%;
+margin-top:5%;
+
+}
+ .animation-box {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  border: 10px solid #19bee1;
+}
+.fa-rss{
+margin-left:50px;
+
+}
+ .session{
+
+
+ }
+ .students{
+width:30%;
+float:left;
+display:inline;
+ }
+ .tutors{
+ 	width:30%;
+float:right;
+ 	display:inline;
+ }
+ .students .ui-selecting{
+
+ 	background-color:red;
+ }
+ .students .ui-selected{
+
+ 	border:1px solid red;
+ }
+ .logo{
+zoom:.4;
+/*background-color:rgba(205,201,201,0.1);*/
+display: inline;
+ }
+ a{
+text-decoration: none;
+ }
+ #buttondisplay{
+ 	display: inline;
+ 	float:right;
+ }
+ .sign{
+width:15%;
+border-radius:4px;	
+ display: inline;
+ }
+ #signin
+{
+background-color: #29d62c
+}
+#signout{
+background-color:#2ed1a8;
+}
+.headshot{
+border-radius:100%;
+width:50px;
+}
+.author{
+zoom:1.5;
+
+}
+.blur{
+	font-size:20px;
+ text-shadow: 0 0 10px black;
+   color: transparent;
+   filter: blur(5px);
+-webkit-filter: blur(5px);
+-moz-filter: blur(5px);
+-o-filter: blur(5px);
+-ms-filter: blur(5px);
+}

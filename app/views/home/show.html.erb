@@ -1,0 +1,43 @@
+<%sessions=[]%>
+<%Tutoringsession.where("finished=?",false).each do |t|%>
+<% sessions<<t.user_id%>
+<%sessions<<t.tutor_id%>
+<%end%>
+<%if session[:user_id]%>
+<%unless User.find(session[:user_id]).tutoring%><div class="waiting"><div class="animation-box"><i class="fa fa-rss fa-spin fa-3x" style="-webkit-transform-origin:0% 100%;"></i></div><br><h2>Waiting for a tutor...</h2></div><%else%><div>
+<ol class="students">
+<%User.where("loggedin=?",true).where("tutoring=?",false).each do |u|%>
+<%unless u.request.class_name=="3365f80a5cccb3e76443df3b736b26e8"%>
+<%unless sessions.include?(u.id)%>
+ <div class="student">
+ 	<p style="display:none"><%=u.id%></p>
+<img class="headshot" style="border-radius: 100%" src=<%=u.image%>>
+<h6><%if u.request%><%=u.request.class_name%>::<%=u.request.topic%></h6><%end%> <%=u.name%>-<%=u.email%>
+</div>
+<%end%>
+<%end%>
+<%end%>
+</ol>
+<ol class="sessions">
+<%Tutoringsession.where("finished=?",false).each do |t|%>
+
+<div class="session"><img src=<%=User.find(t.user_id).image%>><img src=<%=User.find(t.tutor_id).image%>><h4><%=User.find(t.user_id).name%> <%=User.find(t.tutor_id).name%></h4>
+<%end%>
+</ol>
+<ol class="tutors">
+<%User.where("loggedin=?",true).where("tutoring=?",true).each do |u|%>
+<%unless sessions.include?(u.id)%>
+ <div class="tutor">
+ 	<p style="display:none"><%=session[:user_id]%></p>
+<img class="headshot" style="border-radius: 100%" src=<%=u.image%>> <%=u.name%>-<%=u.email%>
+</div>
+<%end%>
+<%end%>
+	</ol>
+
+	
+	</div>
+	<%end%>
+<%else%>
+Log in with your school account!
+<%end%>
